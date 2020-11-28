@@ -8,7 +8,6 @@ class ConnectionBroker {
   public app: express.Application;
   private server: http.Server;
   public io: SocketIO.Server;
-  private host = require('os').hostname();
   private port = process.env.PORT;
 
   public static bootstrap(): ConnectionBroker {
@@ -24,10 +23,10 @@ class ConnectionBroker {
   }
 
   private config() {
-    this.app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
-      const origin = req.header('Origin');
-      res.header('Access-Control-Allow-Origin', origin);
-    });
+    // this.app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
+    //   const origin = req.header('Origin');
+    //   res.header('Access-Control-Allow-Origin', origin);
+    // });
 
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: true }));
@@ -38,8 +37,8 @@ class ConnectionBroker {
       res.send('Connection broker started');
     });
 
-    this.server.listen(this.port, this.host, () => {
-      console.log(`Server is listening on ${this.host}:${this.port}`);
+    this.server.listen(this.port, () => {
+      console.log(`Server is listening on ${this.port}`);
     });
   }
 
