@@ -23,7 +23,7 @@ jobs:
     - name: npm install, build, and test
       run: |
         npm install
-        npm run build-actions --if-present
+        sudo npm run build-actions --if-present
 
     - name: 'Deploy to Azure Web App'
       uses: azure/webapps-deploy@v2
@@ -31,4 +31,4 @@ jobs:
         app-name: 'labwebrtcconnectionbroker'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_cae48614fc7d4d2da79a36d4a0061993 }}
-        package: .
+        package: '/dist'
