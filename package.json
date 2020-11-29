@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -p . && copy public\\index.html dist\\public\\index.html && copy public\\client.js dist\\public\\client.js",
-    "build-actions": "tsc -p . && cp public/index.html dist/public/index.html && cp public/client.js dist/public/client.js",
+    "build-actions": "tsc -p . && mkdir -p /dist/public && cp public/index.html dist/public/index.html && cp public/client.js dist/public/client.js",
     "start": "node ./dist/server.js"
   },
   "keywords": [],
